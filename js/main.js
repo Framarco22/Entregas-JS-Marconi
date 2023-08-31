@@ -6,7 +6,7 @@ function crearObjeto() {
     if (nombre.toLowerCase() === "fin") {
         return false; 
     } 
-const asdsa
+
     let cantidad;
     do {
         const cantidadInput = prompt("Ingrese la cantidad o peso del producto:");
