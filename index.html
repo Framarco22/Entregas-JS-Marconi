@@ -15,6 +15,7 @@
     <input id="cantidadInput" type="number" placeholder="Cantidad">
     <button id="agregarBtn" class="btn btn-outline-success">Agregar Producto</button>
     <button id="mostrarBtn" class="btn btn-success">Mostrar Tabla</button>
+    <button id="guardarBtn" class="btn btn-primary">Guardar Lista</button>
     <table id="tablaObjetos" class="table table-bordered mt-3">
         <thead>
             <tr>
@@ -25,6 +26,21 @@
         <tbody></tbody>
     </table>
     <div id="resultado"></div>
+
+    <button id="listasGuardadasBtn" class="btn btn-primary">Lista Guardadas</button>
+<div id="listaGuardadaDiv" style="display: none;">
+    <h2>Lista Guardada</h2>
+    <table id="listaGuardadaTabla" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/main.js" defer></script>
 </body>

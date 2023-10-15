@@ -64,6 +64,15 @@ function eliminarObjeto(index) {
     });
 }
 
+function guardarLista() {
+    const listasGuardadas = JSON.parse(localStorage.getItem('listasGuardadas')) || [];
+    listasGuardadas.push(listaObjetos);
+
+    localStorage.setItem('listasGuardadas', JSON.stringify(listasGuardadas));
+
+    Swal.fire('Lista Guardada', 'La lista actual ha sido guardada.', 'success');
+}
+
 document.getElementById("agregarBtn").addEventListener("click", function () {
     const nombreInput = document.getElementById("nombreInput");
     const cantidadInput = document.getElementById("cantidadInput");
@@ -91,3 +100,39 @@ document.getElementById("agregarBtn").addEventListener("click", function () {
 });
 
 document.getElementById("mostrarBtn").addEventListener("click", mostrarTabla);
+
+document.getElementById("guardarBtn").addEventListener("click", guardarLista);
+
+
+
+
+function mostrarUltimaListaGuardada() {
+    const listasGuardadas = JSON.parse(localStorage.getItem('listasGuardadas')) || [];
+
+    if (listasGuardadas.length > 0) {
+        const ultimaListaGuardada = listasGuardadas[listasGuardadas.length - 1];
+        const listaGuardadaTabla = document.getElementById("listaGuardadaTabla").getElementsByTagName('tbody')[0];
+        listaGuardadaTabla.innerHTML = "";
+
+        ultimaListaGuardada.forEach(function (objeto) {
+            const row = document.createElement("tr");
+            const cellNombre = document.createElement("td");
+            const cellCantidad = document.createElement("td");
+
+            cellNombre.textContent = objeto.nombre;
+            cellCantidad.textContent = objeto.cantidad;
+
+            row.appendChild(cellNombre);
+            row.appendChild(cellCantidad);
+
+            listaGuardadaTabla.appendChild(row);
+        });
+
+        const listaGuardadaDiv = document.getElementById("listaGuardadaDiv");
+        listaGuardadaDiv.style.display = "block";
+    } else {
+        Swal.fire('No hay listas guardadas', 'No se encontraron listas guardadas.', 'info');
+    }
+}
+
+document.getElementById("listasGuardadasBtn").addEventListener("click", mostrarUltimaListaGuardada);
